@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegisterController">
+    <left>
+        <AnchorPane prefHeight="400.0" prefWidth="243.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="400.0" fitWidth="267.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@lib.jpg" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </left>
+    <center>
+        <AnchorPane prefHeight="400.0" prefWidth="337.0" style="-fx-background-color: #f0f0f0" BorderPane.alignment="CENTER">
+            <children>
+                <Label graphicTextGap="6.0" layoutX="57.0" layoutY="49.0" prefHeight="27.0" prefWidth="323.0" text="Welcome to Reading Room!" textFill="#d77812">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="24.0" layoutY="116.0" text="First Name" textFill="#d77812">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="25.0" layoutY="161.0" text="Last Name" textFill="#d77812">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="firstName" layoutX="122.0" layoutY="113.0" promptText="Enter your Firstname" />
+                <TextField fx:id="lastName" layoutX="122.0" layoutY="158.0" promptText="Enter your Lastname" />
+                <Button fx:id="registerButton" layoutX="136.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleRegister" style="-fx-background-color: #d77812;" text="Register" textFill="WHITE" />
+                <Label layoutX="25.0" layoutY="208.0" text="User Name" textFill="#d77812">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="userName" layoutX="122.0" layoutY="205.0" promptText="Enter your Username" />
+                <Label layoutX="25.0" layoutY="258.0" text="Password" textFill="#d77812">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="password" layoutX="122.0" layoutY="255.0" promptText="Enter your Password" />
+                <Button fx:id="loginButton" layoutX="124.0" layoutY="345.0" mnemonicParsing="false" onAction="#handleBackToLogin" style="-fx-background-color: #d77812;" text="Back to Login" textFill="WHITE" />
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="391.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuController">
+    <Pane prefHeight="422.0" prefWidth="208.0" style="-fx-background-color: #d77812;">
+        <children>
+            <Label fx:id="welcomeLabel" layoutX="7.0" layoutY="31.0" prefHeight="40.0" prefWidth="213.0" text="Welcome, user!">
+                <font>
+                    <Font size="28.0" />
+                </font>
+            </Label>
+            <VBox layoutX="10" layoutY="70" spacing="10" />
+              <Button fx:id="LogoutButton" layoutX="45.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="25.0" prefWidth="82.0" text="Logout" />
+              <Button fx:id="exportOrdersButton" layoutX="45.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleExportOrders" prefHeight="25.0" prefWidth="82.0" text="Export Orders" />
+              <Button fx:id="viewAllOrdersButton" layoutX="45.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleViewAllOrders" prefHeight="25.0" prefWidth="82.0" text="View Orders" />
+              <Button fx:id="editProfileButton" layoutX="44.0" layoutY="185.0" mnemonicParsing="false" onAction="#handleEditProfile" prefHeight="25.0" prefWidth="82.0" text="Edit Profile" />
+              <Button fx:id="MenuButton" layoutX="43.0" layoutY="146.0" mnemonicParsing="false" onAction="#handlerMenu" prefHeight="25.0" prefWidth="82.0" text="Menu" />
+              <Button fx:id="DashboardButton" layoutX="42.0" layoutY="97.0" mnemonicParsing="false" onAction="#handleDashboard" prefHeight="25.0" prefWidth="82.0" text="Dashboard" />
+        </children>
+    </Pane>
+</AnchorPane>

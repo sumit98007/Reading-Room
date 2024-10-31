@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="391.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashboardController">
+    <children>
+        <Pane prefHeight="422.0" prefWidth="208.0" style="-fx-background-color: #d77812;">
+            <children>
+                <Label fx:id="welcomeLabel" layoutX="7.0" layoutY="31.0" prefHeight="40.0" prefWidth="213.0" text="Welcome, user!">
+                    <font>
+                        <Font size="28.0" />
+                    </font>
+                </Label>
+                <Button fx:id="MenuButton" layoutX="51.0" layoutY="152.0" mnemonicParsing="false" onAction="#handlerMenu" prefHeight="25.0" prefWidth="82.0" text="Menu" />
+                <Button fx:id="editProfileButton" layoutX="50.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleEditProfile" prefHeight="25.0" prefWidth="82.0" text="Edit Profile" />
+                <Button fx:id="LogoutButton" layoutX="47.0" layoutY="341.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="25.0" prefWidth="88.0" text="Logout" />
+                <Button fx:id="DashboardButton" layoutX="51.0" layoutY="111.0" mnemonicParsing="false" onAction="#handleDashboard" prefHeight="25.0" prefWidth="82.0" text="Dashboard" />
+                <Button fx:id="viewAllOrdersButton" layoutX="51.0" layoutY="247.0" mnemonicParsing="false" onAction="#handleViewAllOrders" text="View Orders" />
+                <Button fx:id="exportOrdersButton" layoutX="47.0" layoutY="294.0" mnemonicParsing="false" onAction="#handleExportOrders" text="Export Orders" />
+            </children>
+        </Pane>
+        <Label layoutX="253.0" layoutY="36.0" prefHeight="27.0" prefWidth="137.0" text="Popular books">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+
+        <!-- Book 1 Pane -->
+        <Pane layoutX="239.0" layoutY="86.0" prefHeight="80.0" prefWidth="144.0" style="-fx-background-color: #FCF3CF;">
+            <children>
+                <Label fx:id="bookTitle1" layoutX="7.0" layoutY="5.0" text="Book Title 1" />
+                <Label fx:id="bookPrice1" layoutX="110.0" layoutY="5.0"  />
+                <Spinner fx:id="quantitySpinner1" layoutX="9.0" layoutY="45.0" prefHeight="17.0" prefWidth="124.0" />
+            </children>
+        </Pane>
+
+        <!-- Book 2 Pane -->
+        <Pane layoutX="415.0" layoutY="86.0" prefHeight="80.0" prefWidth="144.0" style="-fx-background-color: #FCF3CF;">
+            <children>
+                <Label fx:id="bookTitle2" layoutX="7.0" layoutY="5.0" text="Book Title 2" />
+                <Label fx:id="bookPrice2" layoutX="110.0" layoutY="5.0"  />
+                <Spinner fx:id="quantitySpinner2" layoutX="9.0" layoutY="45.0" prefHeight="17.0" prefWidth="124.0" />
+            </children>
+        </Pane>
+
+        <!-- Book 3 Pane -->
+        <Pane layoutX="239.0" layoutY="187.0" prefHeight="80.0" prefWidth="144.0" style="-fx-background-color: #FCF3CF;">
+            <children>
+                <Label fx:id="bookTitle3" layoutX="7.0" layoutY="5.0" text="Book Title 3" />
+                <Label fx:id="bookPrice3" layoutX="110.0" layoutY="5.0"  />
+                <Spinner fx:id="quantitySpinner3" layoutX="9.0" layoutY="45.0" prefHeight="17.0" prefWidth="124.0" />
+            </children>
+        </Pane>
+
+        <!-- Book 4 Pane -->
+        <Pane layoutX="415.0" layoutY="187.0" prefHeight="80.0" prefWidth="144.0" style="-fx-background-color: #FCF3CF;">
+            <children>
+                <Label fx:id="bookTitle4" layoutX="7.0" layoutY="5.0" text="Book Title 4" />
+                <Label fx:id="bookPrice4" layoutX="110.0" layoutY="5.0"  />
+                <Spinner fx:id="quantitySpinner4" layoutX="9.0" layoutY="45.0" prefHeight="17.0" prefWidth="124.0" />
+            </children>
+        </Pane>
+
+        <!-- Book 5 Pane -->
+        <Pane layoutX="319.0" layoutY="303.0" prefHeight="80.0" prefWidth="144.0" style="-fx-background-color: #FCF3CF;">
+            <children>
+                <Label fx:id="bookTitle5" layoutX="7.0" layoutY="5.0" text="Book Title 5" />
+                <Label fx:id="bookPrice5" layoutX="110.0" layoutY="5.0"  />
+                <Spinner fx:id="quantitySpinner5" layoutX="9.0" layoutY="45.0" prefHeight="17.0" prefWidth="124.0" />
+            </children>
+        </Pane>
+
+    </children>
+</AnchorPane>
