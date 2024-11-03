@@ -51,7 +51,7 @@ public class RegisterController {
             return;
         }
 
-        User user = new User(firstNameText, lastNameText, userNameText, passwordText);
+        User user = new User(firstNameText, lastNameText, userNameText, passwordText, false);
         boolean success = userDAO.saveUserInDatabase(user);
         if (success) {
             showAlert(Alert.AlertType.INFORMATION, "Registration Successful!", "Username registered successfully.");
