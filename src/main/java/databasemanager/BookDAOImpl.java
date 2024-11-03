@@ -17,6 +17,28 @@ public class BookDAOImpl implements BookDAO {
         return instance;
     }
 
+    @Override
+    public Book getBookById(int bookId) {
+        String sql = "SELECT * FROM books WHERE bookId = ?";
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, bookId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return new Book(
+                        rs.getInt("bookId"),
+                        rs.getString("title"),
+                        rs.getString("authors"),
+                        rs.getInt("physical_copies"),
+                        rs.getDouble("price"),
+                        rs.getInt("sold_copies")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 
     @Override
@@ -63,17 +85,12 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public boolean updateBook(Book book) {
-        String sql = "UPDATE books SET title = ?, authors = ?, physical_copies = ?, price = ?, sold_copies = ? WHERE bookId = ?";
+        String sql = "UPDATE books SET physical_copies = ? WHERE bookId = ?";
         try (Connection conn = DatabaseConnector.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, book.getTitle());
-            pstmt.setString(2, book.getAuthors());
-            pstmt.setInt(3, book.getPhysicalCopies());
-            pstmt.setDouble(4, book.getPrice());
-            pstmt.setInt(5, book.getSoldCopies());
-            pstmt.setInt(6, book.getBookId());
-            int rowsUpdated = pstmt.executeUpdate();
-            return rowsUpdated > 0;
+            pstmt.setInt(1, book.getPhysicalCopies());
+            pstmt.setInt(2, book.getBookId());
+            return pstmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -89,7 +106,7 @@ public class BookDAOImpl implements BookDAO {
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 return new Book(
-                        rs.getInt("bookId"),
+                        rs.getInt("bookID"),
                         rs.getString("title"),
                         rs.getString("authors"),
                         rs.getInt("physical_copies"),

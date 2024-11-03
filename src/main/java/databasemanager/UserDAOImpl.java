@@ -73,17 +73,7 @@ public class UserDAOImpl implements UserDAO {
         return false;
     }
 
-    /*public void updateUserCredits(int userId, int credits) {
-        String query = "UPDATE user SET credits = ? WHERE userID = ?";
-        try (Connection connection = DatabaseConnector.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, credits);
-            preparedStatement.setInt(2, userId);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }*/
+
 
 
 

@@ -8,4 +8,6 @@ public interface BookDAO {
     boolean updateBook(Book book);
     Book findBookById(int bookId);
     List<Book> findAllBooks();
+    Book getBookById(int bookId);
+
 }

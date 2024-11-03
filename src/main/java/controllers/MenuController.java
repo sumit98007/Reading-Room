@@ -95,13 +95,31 @@ public class MenuController {
     }
     @FXML
     private void handleEditProfile() {
-        // Your code to handle the menu action, e.g., navigate to another view
-        System.out.println("Menu button clicked");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/readingroom/readingroom/EditProfile.fxml"));
+            Parent editProfileRoot = loader.load();
+            EditProfileController editProfileController = loader.getController();
+            editProfileController.setPrimaryStage(primaryStage);
+            editProfileController.setUser(user);
+
+            primaryStage.setScene(new Scene(editProfileRoot));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     @FXML
     private void handleLogout() {
-        // Your code to handle the menu action, e.g., navigate to another view
-        System.out.println("Menu button clicked");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/readingroom/readingroom/LoginView.fxml"));
+            Parent loginRoot = loader.load();
+            LoginController loginController = loader.getController();
+            loginController.setPrimaryStage(primaryStage);
+
+            primaryStage.setScene(new Scene(loginRoot));
+            primaryStage.setTitle("Login");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     @FXML
     private void handleDashboard() {
@@ -110,13 +128,40 @@ public class MenuController {
     }
     @FXML
     private void handleViewAllOrders() {
-        // Your code to handle the menu action, e.g., navigate to another view
-        System.out.println("Menu button clicked");
+        try {
+            // Load the ViewAllOrders FXML file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/readingroom/readingroom/ViewAllOrderView.fxml"));
+            Parent viewAllOrdersRoot = loader.load();
+
+            // Get the controller of the ViewAllOrders view
+            ViewAllOrdersController viewAllOrdersController = loader.getController();
+
+            // Pass the user and primary stage to the ViewAllOrdersController
+            viewAllOrdersController.setUser(this.user); // Pass the current user
+            viewAllOrdersController.setPrimaryStage(this.primaryStage);
+
+            // Set up the scene and display it
+            Scene viewAllOrdersScene = new Scene(viewAllOrdersRoot);
+            primaryStage.setScene(viewAllOrdersScene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error loading ViewAllOrders view");
+        }
     }
     @FXML
     private void handleExportOrders() {
-        // Your code to handle the menu action, e.g., navigate to another view
-        System.out.println("Menu button clicked");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/readingroom/readingroom/LoginView.fxml"));
+            Parent loginRoot = loader.load();
+            LoginController loginController = loader.getController();
+            loginController.setPrimaryStage(primaryStage);
+
+            primaryStage.setScene(new Scene(loginRoot));
+            primaryStage.setTitle("Login");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     @FXML
     private void handleGoToCart() {
@@ -127,6 +172,19 @@ public class MenuController {
 
 
     private void handleAddToCart(Book book, int quantity) {
+        int availableStock = book.getPhysicalCopies();
+        int currentCartQuantity = cart.getTotalQuantityForBook(book.getBookId());
+
+        // Fetch the latest stock information from the database
+         availableStock = bookDao.getBookById(book.getBookId()).getPhysicalCopies();
+        int totalQuantityInCart = cart.getTotalQuantityForBook(book.getBookId());
+
+        if (quantity + totalQuantityInCart > availableStock) {
+            showAlert("Stock Warning", "Not enough stock available for " + book.getTitle() + ". Available: " + availableStock);
+            return;
+        }
+
+
         if (quantity > 0) {
             CartItem item = new CartItem(book.getBookId(), book.getTitle(), book.getPrice(), quantity);
             cart.addOrUpdateItem(item);

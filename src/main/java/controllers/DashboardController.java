@@ -282,24 +282,23 @@ public class DashboardController {
 
     }
 
+    @FXML
     public void handleUpdateStock(ActionEvent actionEvent) {
         try {
-            // Load the UpdateStockView.fxml layout
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/readingroom/readingroom/UpdateStockView.fxml"));
             Parent updateStockRoot = loader.load();
 
-            // Get the controller for UpdateStockView
             UpdateStockController updateStockController = loader.getController();
+            updateStockController.setBookDAO(bookDao); // Set BookDAO to load books
 
-            // Pass necessary data (like the list of books) to the controller
-            updateStockController.initializeBooks(bookDao.findAllBooks()); // Assuming `findAllBooks` gets all books from the database
+            // Call initializeBooks with the list of books
+            List<Book> books = bookDao.findAllBooks();
+            updateStockController.initializeBooks(books);
 
-            // Create a new stage for the Update Stock window
             Stage updateStockStage = new Stage();
             updateStockStage.setTitle("Update Stock");
             updateStockStage.setScene(new Scene(updateStockRoot));
-
-            // Show the Update Stock window
+            updateStockStage.initOwner(primaryStage);
             updateStockStage.show();
         } catch (IOException e) {
             e.printStackTrace();

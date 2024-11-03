@@ -36,6 +36,9 @@ public class OrderDAOImpl implements OrderDAO {
 
                 // Now save the order items
                 saveOrderItems(orderId, order.getItems());  // Changed from getCartItems() to getItems()
+
+                // Update book stock after saving order items
+                updateBookStock(order.getItems());
             } else {
                 throw new SQLException("Creating order failed, no ID obtained.");
             }
@@ -59,6 +62,28 @@ public class OrderDAOImpl implements OrderDAO {
             System.out.println("Order items saved successfully.");
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void updateBookStock(List<OrderItem> orderItems) {
+        String updateStockSQL = "UPDATE books SET physical_copies = physical_copies - ?, sold_copies = sold_copies + ? WHERE bookId = ?";
+
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(updateStockSQL)) {
+
+            for (OrderItem item : orderItems) {
+                pstmt.setInt(1, item.getQuantity()); // Decrease physical copies
+                pstmt.setInt(2, item.getQuantity()); // Increase sold copies
+                pstmt.setInt(3, item.getBookId());   // Target book by ID
+                pstmt.addBatch();  // Add to batch for efficient execution
+            }
+
+            pstmt.executeBatch(); // Execute batch update
+            System.out.println("Book stock updated successfully after order placement.");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error updating book stock.");
         }
     }
 

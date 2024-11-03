@@ -32,7 +32,7 @@ public class UpdateStockController {
     public void initializeBooks(List<Book> books) {
         bookComboBox.setItems(FXCollections.observableArrayList(books));
 
-        // Set a custom cell factory to display the book title
+        // Set a custom cell factory to display the book title in the ComboBox
         bookComboBox.setCellFactory(lv -> new ListCell<Book>() {
             @Override
             protected void updateItem(Book item, boolean empty) {
@@ -49,25 +49,39 @@ public class UpdateStockController {
                 setText(empty ? "" : item.getTitle());  // Display book title
             }
         });
+
+        // Add listener to update spinner value based on selected book's current stock
+        bookComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, selectedBook) -> {
+            if (selectedBook != null) {
+                // Set the spinner to show the current stock of the selected book
+                stockSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Integer.MAX_VALUE, selectedBook.getPhysicalCopies()));
+            }
+        });
     }
 
     @FXML
     private void handleSave() {
         Book selectedBook = bookComboBox.getValue();
-        int newStock = stockSpinner.getValue();
-
-        if (selectedBook != null) {
-            selectedBook.setPhysicalCopies(newStock);
-            boolean success = bookDAO.updateBook(selectedBook);
-            if (success) {
-                showAlert("Success", "Stock updated successfully!");
-                stage = (Stage) stockSpinner.getScene().getWindow();
-                stage.close();
-            } else {
-                showAlert("Error", "Failed to update stock.");
-            }
-        } else {
+        if (selectedBook == null) {
             showAlert("Error", "Please select a book.");
+            return;
+        }
+
+        Integer newStock = stockSpinner.getValue();
+        if (newStock == null) {
+            showAlert("Error", "Please enter a valid stock quantity.");
+            return;
+        }
+
+        // Update the book's stock and save it to the database
+        selectedBook.setPhysicalCopies(newStock);
+        boolean success = bookDAO.updateBook(selectedBook);
+
+        if (success) {
+            showAlert("Success", "Stock updated successfully!");
+            closeWindow();
+        } else {
+            showAlert("Error", "Failed to update stock.");
         }
     }
 
@@ -77,8 +91,13 @@ public class UpdateStockController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     @FXML
     private void handleCancel() {
+        closeWindow();
+    }
+
+    private void closeWindow() {
         stage = (Stage) stockSpinner.getScene().getWindow();
         stage.close();
     }
