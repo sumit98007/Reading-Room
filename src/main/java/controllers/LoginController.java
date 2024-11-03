@@ -25,6 +25,10 @@ public class LoginController {
 
     private Stage primaryStage;
 
+    // Define admin credentials
+    private static final String ADMIN_USERNAME = "admin";
+    private static final String ADMIN_PASSWORD = "reading_admin";
+
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
@@ -47,6 +51,9 @@ public class LoginController {
             User user = (User) result.get("user");
             System.out.println("Logged in User ID: " + user.getUserID()); // Debugging line to check userID
 
+            // Check if the logged-in user is the admin
+            boolean isAdmin = usernameText.equals(ADMIN_USERNAME) && passwordText.equals(ADMIN_PASSWORD);
+
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/readingroom/readingroom/DashboardView.fxml")); // Ensure the path is correct
                 Parent root = loader.load();
@@ -54,6 +61,7 @@ public class LoginController {
                 DashboardController dashboardController = loader.getController();
                 dashboardController.setPrimaryStage(primaryStage);
                 dashboardController.setUser(user);
+                dashboardController.setIsAdmin(isAdmin); // Pass the admin status
 
                 primaryStage.setScene(new Scene(root));
                 primaryStage.show();
