@@ -13,12 +13,15 @@
                         <Font size="28.0" />
                     </font>
                 </Label>
-                <Button fx:id="MenuButton" layoutX="51.0" layoutY="152.0" mnemonicParsing="false" onAction="#handlerMenu" prefHeight="25.0" prefWidth="82.0" text="Menu" />
-                <Button fx:id="editProfileButton" layoutX="50.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleEditProfile" prefHeight="25.0" prefWidth="82.0" text="Edit Profile" />
-                <Button fx:id="LogoutButton" layoutX="47.0" layoutY="341.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="25.0" prefWidth="88.0" text="Logout" />
-                <Button fx:id="DashboardButton" layoutX="51.0" layoutY="111.0" mnemonicParsing="false" onAction="#handleDashboard" prefHeight="25.0" prefWidth="82.0" text="Dashboard" />
-                <Button fx:id="viewAllOrdersButton" layoutX="51.0" layoutY="247.0" mnemonicParsing="false" onAction="#handleViewAllOrders" text="View Orders" />
-                <Button fx:id="exportOrdersButton" layoutX="47.0" layoutY="294.0" mnemonicParsing="false" onAction="#handleExportOrders" text="Export Orders" />
+                <Button fx:id="MenuButton" layoutX="51.0" layoutY="134.0" mnemonicParsing="false" onAction="#handlerMenu" prefHeight="25.0" prefWidth="82.0" text="Menu" />
+                <Button fx:id="editProfileButton" layoutX="50.0" layoutY="174.0" mnemonicParsing="false" onAction="#handleEditProfile" prefHeight="25.0" prefWidth="82.0" text="Edit Profile" />
+                <Button fx:id="LogoutButton" layoutX="47.0" layoutY="289.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="25.0" prefWidth="88.0" text="Logout" />
+                <Button fx:id="DashboardButton" layoutX="51.0" layoutY="98.0" mnemonicParsing="false" onAction="#handleDashboard" prefHeight="25.0" prefWidth="82.0" text="Dashboard" />
+                <Button fx:id="viewAllOrdersButton" layoutX="52.0" layoutY="211.0" mnemonicParsing="false" onAction="#handleViewAllOrders" text="View Orders" />
+                <Button fx:id="exportOrdersButton" layoutX="46.0" layoutY="248.0" mnemonicParsing="false" onAction="#handleExportOrders" text="Export Orders" />
+                 <Button fx:id="viewStockButton" layoutX="47.0" layoutY="331.0" onAction="#handleViewStock" prefHeight="25.0" prefWidth="87.0" text="View Stock" />
+                 <Button fx:id="updateStockButton" layoutX="48.0" layoutY="367.0" onAction="#handleUpdateStock" text="Update Stock" />
+
             </children>
         </Pane>
         <Label layoutX="253.0" layoutY="36.0" prefHeight="27.0" prefWidth="137.0" text="Popular books">
@@ -31,7 +34,7 @@
         <Pane layoutX="239.0" layoutY="86.0" prefHeight="80.0" prefWidth="144.0" style="-fx-background-color: #FCF3CF;">
             <children>
                 <Label fx:id="bookTitle1" layoutX="7.0" layoutY="5.0" text="Book Title 1" />
-                <Label fx:id="bookPrice1" layoutX="110.0" layoutY="5.0"  />
+                <Label fx:id="bookPrice1" layoutX="110.0" layoutY="5.0" />
                 <Spinner fx:id="quantitySpinner1" layoutX="9.0" layoutY="45.0" prefHeight="17.0" prefWidth="124.0" />
             </children>
         </Pane>
@@ -40,37 +43,40 @@
         <Pane layoutX="415.0" layoutY="86.0" prefHeight="80.0" prefWidth="144.0" style="-fx-background-color: #FCF3CF;">
             <children>
                 <Label fx:id="bookTitle2" layoutX="7.0" layoutY="5.0" text="Book Title 2" />
-                <Label fx:id="bookPrice2" layoutX="110.0" layoutY="5.0"  />
+                <Label fx:id="bookPrice2" layoutX="110.0" layoutY="5.0" />
                 <Spinner fx:id="quantitySpinner2" layoutX="9.0" layoutY="45.0" prefHeight="17.0" prefWidth="124.0" />
             </children>
         </Pane>
 
         <!-- Book 3 Pane -->
-        <Pane layoutX="239.0" layoutY="187.0" prefHeight="80.0" prefWidth="144.0" style="-fx-background-color: #FCF3CF;">
+        <Pane layoutX="250.0" layoutY="179.0" prefHeight="80.0" prefWidth="144.0" style="-fx-background-color: #FCF3CF;">
             <children>
                 <Label fx:id="bookTitle3" layoutX="7.0" layoutY="5.0" text="Book Title 3" />
-                <Label fx:id="bookPrice3" layoutX="110.0" layoutY="5.0"  />
+                <Label fx:id="bookPrice3" layoutX="110.0" layoutY="5.0" />
                 <Spinner fx:id="quantitySpinner3" layoutX="9.0" layoutY="45.0" prefHeight="17.0" prefWidth="124.0" />
             </children>
         </Pane>
 
         <!-- Book 4 Pane -->
-        <Pane layoutX="415.0" layoutY="187.0" prefHeight="80.0" prefWidth="144.0" style="-fx-background-color: #FCF3CF;">
+        <Pane layoutX="415.0" layoutY="179.0" prefHeight="80.0" prefWidth="144.0" style="-fx-background-color: #FCF3CF;">
             <children>
                 <Label fx:id="bookTitle4" layoutX="7.0" layoutY="5.0" text="Book Title 4" />
-                <Label fx:id="bookPrice4" layoutX="110.0" layoutY="5.0"  />
+                <Label fx:id="bookPrice4" layoutX="110.0" layoutY="5.0" />
                 <Spinner fx:id="quantitySpinner4" layoutX="9.0" layoutY="45.0" prefHeight="17.0" prefWidth="124.0" />
             </children>
         </Pane>
 
         <!-- Book 5 Pane -->
-        <Pane layoutX="319.0" layoutY="303.0" prefHeight="80.0" prefWidth="144.0" style="-fx-background-color: #FCF3CF;">
+        <Pane layoutX="250.0" layoutY="282.0" prefHeight="80.0" prefWidth="144.0" style="-fx-background-color: #FCF3CF;">
             <children>
                 <Label fx:id="bookTitle5" layoutX="7.0" layoutY="5.0" text="Book Title 5" />
-                <Label fx:id="bookPrice5" layoutX="110.0" layoutY="5.0"  />
+                <Label fx:id="bookPrice5" layoutX="110.0" layoutY="5.0" />
                 <Spinner fx:id="quantitySpinner5" layoutX="9.0" layoutY="45.0" prefHeight="17.0" prefWidth="124.0" />
             </children>
         </Pane>
+        <Button layoutX="300.0" layoutY="382.0" mnemonicParsing="false" onAction="#handleAddToCart" prefHeight="25.0" prefWidth="124.0" text="Add to Cart" />
 
     </children>
+
+
 </AnchorPane>

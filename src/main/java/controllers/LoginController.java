@@ -51,7 +51,7 @@ public class LoginController {
             User user = (User) result.get("user");
             System.out.println("Logged in User ID: " + user.getUserID()); // Debugging line to check userID
 
-            // Check if the logged-in user is the Admin
+            // Check if the logged-in user is the admin
             boolean isAdmin = usernameText.equals(ADMIN_USERNAME) && passwordText.equals(ADMIN_PASSWORD);
 
             try {

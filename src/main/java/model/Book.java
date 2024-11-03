@@ -62,4 +62,9 @@ public class Book {
     public void setSoldCopies(int soldCopies) {
         this.soldCopies = soldCopies;
     }
+
+    @Override
+    public String toString() {
+        return title;  // Replace 'title' with the appropriate field in your Book class
+    }
 }

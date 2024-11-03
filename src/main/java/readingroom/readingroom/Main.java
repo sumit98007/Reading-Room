@@ -31,7 +31,7 @@ public class Main extends Application {
         // You can set up any necessary references for the controller here, if needed
          controller.setPrimaryStage(primaryStage); // If needed in RegisterController
 
-        primaryStage.setTitle("Reading Room Login");
+        primaryStage.setTitle("Reading Room");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

@@ -7,22 +7,25 @@ public class User {
     private String lastName;
     private String userName;
     private String password;
+    private boolean isAdmin;
 
     // constructor for creating a new User with all the fields
-    public User(int userID, String firstName, String lastName, String userName, String password) {
+    public User(int userID, String firstName, String lastName, String userName, String password, boolean isAdmin) {
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
         this.password = password;
+        this.isAdmin = isAdmin;
     }
 
     // constructor for creating a new user without specifying userId
-    public User(String firstName, String lastName, String userName, String password) {
+    public User(String firstName, String lastName, String userName, String password, boolean isAdmin) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
         this.password = password;
+        this.isAdmin = isAdmin;
     }
 
     // getters and setters
@@ -66,6 +69,13 @@ public class User {
         this.password = password;
     }
 
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
 
 
 

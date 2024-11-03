@@ -97,8 +97,14 @@ public class UserDAOImpl implements UserDAO {
             pstmt.setString(2, password);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                User user = new User(rs.getInt("userID"), rs.getString("firstName"), rs.getString("lastName"),
-                        rs.getString("userName"), rs.getString("password"));
+                User user = new User(
+                        rs.getInt("userID"),
+                        rs.getString("firstName"),
+                        rs.getString("lastName"),
+                        rs.getString("userName"),
+                        rs.getString("password"),
+                        rs.getBoolean("isAdmin")  // Fetch isAdmin flag
+                );
                 result.put("loginSuccess", true);
                 result.put("user", user);
             } else {
@@ -110,7 +116,6 @@ public class UserDAOImpl implements UserDAO {
         }
         return result;
     }
-
     @Override
     public void getLatestUserId() {
         // Not implemented

@@ -11,13 +11,17 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.CartItem;
 import model.Order;
+import model.OrderItem;
 import model.User;
 import databasemanager.OrderDAOImpl;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PaymentController {
 
@@ -58,7 +62,7 @@ public class PaymentController {
 
         if (validateCardNumber(cardNumber) && validateExpiryDate(expiryDate) && validateCVV(cvv)) {
             placeOrder();
-            showSuccessMessage();
+            showSuccessMessage("Your order has been placed successfully!");
         } else {
             showErrorMessage("Invalid payment details. Please check and try again.");
         }
@@ -88,15 +92,28 @@ public class PaymentController {
             return;
         }
 
-        Order order = new Order(cartItems, totalPrice, user.getUserID());
+        // Convert CartItems to OrderItems (assuming this is how items should be set)
+        List<OrderItem> orderItems = cartItems.stream()
+                .map(cartItem -> new OrderItem(cartItem.getBookId(), cartItem.getQuantity(), cartItem.getPrice()))
+                .collect(Collectors.toList());
+
+        // Create the order with the list of OrderItems
+        Order order = new Order(0, user.getUserID(), totalPrice, LocalDateTime.now(), orderItems);
+
+        // Save the order
         OrderDAOImpl orderDAO = new OrderDAOImpl();
         orderDAO.saveOrderInDatabase(order);
+
+        // Display a success message
+        showSuccessMessage("Your order has been placed successfully!");
     }
 
-    private void showSuccessMessage() {
+
+    private void showSuccessMessage(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Payment Successful");
-        alert.setContentText("Your payment was successful and the order has been placed.");
+        alert.setTitle("Order Confirmation");
+        alert.setHeaderText("Order Saved");
+        alert.setContentText(message);
         alert.showAndWait();
     }
 

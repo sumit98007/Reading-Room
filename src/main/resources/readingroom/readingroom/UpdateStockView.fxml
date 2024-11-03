@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="222.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UpdateStockController">
+
+    <children>
+        <VBox alignment="CENTER" layoutX="50.0" layoutY="30.0" prefWidth="300.0" spacing="15">
+            <children>
+                <!-- Label for selecting a book -->
+                <Label text="Select Book to Update Stock" />
+
+                <!-- ComboBox for book selection -->
+                <ComboBox fx:id="bookComboBox" prefWidth="250" promptText="Select a book" />
+
+                <!-- Label and Spinner for setting new stock amount -->
+                <Label text="Enter New Stock Quantity" />
+                <Spinner fx:id="stockSpinner" prefWidth="100" />
+
+                <!-- HBox for action buttons -->
+                <HBox alignment="CENTER" spacing="10">
+                    <Button onAction="#handleSave" text="Save" />
+                    <Button onAction="#handleCancel" text="Cancel" />
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

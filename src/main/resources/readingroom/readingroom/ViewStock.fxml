@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ViewStockController">
+    <TableView fx:id="bookTable" prefWidth="600" prefHeight="400">
+        <columns>
+            <TableColumn fx:id="titleColumn" text="Title" prefWidth="150"/>
+            <TableColumn fx:id="authorsColumn" text="Authors" prefWidth="150"/>
+            <TableColumn fx:id="priceColumn" text="Price" prefWidth="100"/>
+            <TableColumn fx:id="soldCopiesColumn" text="Sold Copies" prefWidth="100"/>
+            <TableColumn fx:id="stockColumn" text="Stock" prefWidth="100"/>
+        </columns>
+    </TableView>
+</VBox>

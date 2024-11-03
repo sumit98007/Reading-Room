@@ -69,7 +69,7 @@ public class DashboardController {
         }
     }
 
-    public void setPrimaryStage(Stage primaryStage) {
+        public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
         System.out.println("primaryStage set in [Controller Name]");
     }

@@ -21,7 +21,7 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public boolean saveBook(Book book) {
-        String sql = "INSERT INTO books (title, authors, physicalCopies, price, soldCopies) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO books (title, authors, physical_copies, price, sold_copies) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnector.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, book.getTitle());
@@ -63,7 +63,7 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public boolean updateBook(Book book) {
-        String sql = "UPDATE books SET title = ?, authors = ?, physicalCopies = ?, price = ?, soldCopies = ? WHERE bookId = ?";
+        String sql = "UPDATE books SET title = ?, authors = ?, physical_copies = ?, price = ?, sold_copies = ? WHERE bookId = ?";
         try (Connection conn = DatabaseConnector.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, book.getTitle());
@@ -92,9 +92,9 @@ public class BookDAOImpl implements BookDAO {
                         rs.getInt("bookId"),
                         rs.getString("title"),
                         rs.getString("authors"),
-                        rs.getInt("physicalCopies"),
+                        rs.getInt("physical_copies"),
                         rs.getDouble("price"),
-                        rs.getInt("soldCopies")
+                        rs.getInt("sold_copies")
                 );
             }
         } catch (SQLException e) {
@@ -136,9 +136,9 @@ public class BookDAOImpl implements BookDAO {
                         rs.getInt("bookId"),
                         rs.getString("title"),
                         rs.getString("authors"),
-                        rs.getInt("physicalCopies"),
+                        rs.getInt("physical_copies"),
                         rs.getDouble("price"),
-                        rs.getInt("soldCopies")
+                        rs.getInt("sold_copies")
                 ));
             }
         } catch (SQLException e) {

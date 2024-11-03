@@ -8,4 +8,5 @@ module readingroom.readingroom {
 
     exports readingroom.readingroom to javafx.fxml, javafx.graphics;
     opens controllers to javafx.fxml;
+    opens model to javafx.base;
 }
